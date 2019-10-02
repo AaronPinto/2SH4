@@ -22,17 +22,13 @@ void question5() {
     string_copy(src, dest, size);
     puts(dest);
 
-    char src2[] = "a same size as dest";
-    string_copy(src2, dest, size);
-    puts(dest);
+    char src2[] = "a same size as dest", dest2[size] = {0};
+    string_copy(src2, dest2, size);
+    puts(dest2);
 
-    char src3[] = "definitely longer than dest";
-    string_copy(src3, dest, size);
-    puts(dest);
-
-    char src4[0];
-    string_copy(src4, dest, size);
-    puts(dest);
+    char src3[] = "definitely longer than dest", dest3[size] = {0};
+    string_copy(src3, dest3, size);
+    puts(dest3);
 }
 
 //int main() {

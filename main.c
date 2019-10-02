@@ -1,7 +1,7 @@
 #include "Lab 2/lab2.h"
 
 int main() {
-    question1();
+    question6();
 
     return 0;
 }
