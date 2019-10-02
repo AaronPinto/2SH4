@@ -4,5 +4,6 @@ set(CMAKE_C_STANDARD 11)
 
 file(GLOB LAB1 "Lab 1/*.h" "Lab 1/*.c")
 file(GLOB LAB2 "Lab 2/*.h" "Lab 2/*.c")
+file(GLOB QUIZZES "Quizzes/*.c")
 
 add_executable(2SH4 ${LAB2} main.c sizeOfArray.c)
