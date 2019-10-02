@@ -1,4 +1,4 @@
-#include "Lab 1/lab1.h"
+#include "Lab 2/lab2.h"
 
 int main() {
     question1();
