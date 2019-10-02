@@ -26,16 +26,19 @@ void question6() {
     puts("input sparse vector:");
     for (int i = 0; i < xSize; i++)
         printf("%d ", x[i]);
+    puts("");
 
     efficient(x, val, pos, xSize);
 
     puts("\nval:");
     for (int i = 0; i < k; i++)
         printf("%d ", val[i]);
+    puts("");
 
     puts("\npos:");
     for (int i = 0; i < k; i++)
         printf("%d ", pos[i]);
+    puts("");
 
     int rec[xSize] = {0};
     reconstruct(rec, xSize, val, pos, k);
@@ -43,6 +46,7 @@ void question6() {
     puts("\nreconstructed sparse vector:");
     for (int i = 0; i < xSize; i++)
         printf("%d ", rec[i]);
+    puts("");
 }
 
 //int main() {

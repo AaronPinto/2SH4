@@ -33,16 +33,19 @@ void question1() {
 
     puts("Vector a:");
     print_vector(a, 3);
+    puts("");
 
     puts("Vector b:");
     print_vector(b, 3);
+    puts("");
 
     add_vectors(a, b, c, 3);
     puts("Sum of vectors a & b:");
     print_vector(c, 3);
+    puts("");
 
-    printf("Scalar prod of a & b: %f\n", scalar_prod(a, b, 3));
-    printf("Norm2 of a: %f\n", norm2(a, 3));
+    printf("Scalar prod of a & b: \n%f\n\n", scalar_prod(a, b, 3));
+    printf("Norm2 of a: \n%f\n", norm2(a, 3));
 }
 
 //int main() {

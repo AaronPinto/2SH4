@@ -32,21 +32,21 @@ void question2() {
             {1, -3, 2},
             {-1, 2, 4},
     };
-    printf("a: %d\n", is_diag_dom(a));
+    printf("Weak diagonal dominance: %d\n", is_diag_dom(a));
 
     int b[][N] = {
             {-2, 2, 1},
             {1, 3, 2},
             {1, -2, 0},
     };
-    printf("b: %d\n", is_diag_dom(b));
+    printf("No diagonal dominance: %d\n", is_diag_dom(b));
 
     int c[][N] = {
             {-4, 2, 1},
             {1, 6, 2},
             {1, -2, 5},
     };
-    printf("c: %d\n", is_diag_dom(c));
+    printf("Strict diagonal dominance: %d\n", is_diag_dom(c));
 }
 
 //int main() {

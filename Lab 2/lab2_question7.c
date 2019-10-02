@@ -60,10 +60,11 @@ void addEff(int val1[], int val2[], int val3[], int pos1[], int pos2[], int pos3
 
     sort(pos3, maxNumOfPos);
 
+    puts("Pos 3: ");
     for (int l = 0; l < maxNumOfPos; l++) {
         printf("%d ", pos3[l]);
     }
-    puts("");
+    puts("\n");
 
     for (int m = 0; m < maxNumOfPos; m++) {
         for (int i = 0; i < k1; i++) {
@@ -79,6 +80,7 @@ void addEff(int val1[], int val2[], int val3[], int pos1[], int pos2[], int pos3
         }
     }
 
+    puts("Val 3: ");
     for (int l = 0; l < maxNumOfPos; l++) {
         printf("%d ", val3[l]);
     }
