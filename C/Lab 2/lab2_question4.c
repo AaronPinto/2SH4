@@ -2,7 +2,6 @@
 // Created by aaron on 2019-09-25.
 //
 #include <stdio.h>
-#include "lab2.h"
 
 void letter_freq(const char word[], int freq[]) {
     int c;

@@ -2,7 +2,6 @@
 // Created by aaron on 2019-09-25.
 //
 #include <stdio.h>
-#include "lab2.h"
 
 static int sort(int d[], int size) {
     int i, j;

@@ -3,7 +3,6 @@
 //
 #include <stdio.h>
 #include <math.h>
-#include "lab2.h"
 
 void print_vector(double array[], int size) {
     for (int i = 0; i < size - 1; i++)

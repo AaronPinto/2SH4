@@ -2,7 +2,6 @@
 // Created by aaron on 2019-09-25.
 //
 #include <stdio.h>
-#include "lab2.h"
 
 void efficient(const int source[], int val[], int pos[], int size) {
     int j = 0;
