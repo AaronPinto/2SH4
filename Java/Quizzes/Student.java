@@ -1,11 +1,10 @@
 package Quizzes;
 
-// Quiz 6
+// Quiz 6 & 7
 public class Student {
-	private String name;
-	private String dateOfBirth; // Can use Date class
+	private String name, dateOfBirth; // Can use Date class
 	private int yearInSchool;
-	private String[] coursesTaken;
+	private Courses[] coursesTaken;
 
 	public Student() {
 
@@ -35,11 +34,11 @@ public class Student {
 		this.yearInSchool = yearInSchool;
 	}
 
-	public String[] getCoursesTaken() {
+	public Courses[] getCoursesTaken() {
 		return coursesTaken;
 	}
 
-	public void setCoursesTaken(String[] coursesTaken) {
+	public void setCoursesTaken(Courses[] coursesTaken) {
 		this.coursesTaken = coursesTaken;
 	}
 }
