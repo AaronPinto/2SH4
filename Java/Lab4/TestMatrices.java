@@ -3,8 +3,7 @@ package Lab4;
 import java.util.Arrays;
 
 /**
- * @author sorina
- * (a previous prof for this class) - aaron
+ * @author sorina (a previous prof for this class) - aaron
  */
 public class TestMatrices {
 	/**
@@ -202,8 +201,7 @@ public class TestMatrices {
 			System.out.println();
 		}// end try-catch
 
-		int[][] temp15 = {{1, 2, 3, 4, 5, 6}, {0, 7, 8, 9, 9, 9}, {0, 0, 3, 3, 3, 3}, {0, 0, 0, 4, 4, 4}, {0, 0, 0, 0,
-            5, 5}, {0, 0, 0, 0, 0, 7}};
+		int[][] temp15 = {{1, 2, 3, 4, 5, 6}, {0, 7, 8, 9, 9, 9}, {0, 0, 3, 3, 3, 3}, {0, 0, 0, 4, 4, 4}, {0, 0, 0, 0,5, 5}, {0, 0, 0, 0, 0, 7}};
 		mm1 = new Matrix(temp15);
 		m4 = new UpperTriangularMatrix(mm1);
 

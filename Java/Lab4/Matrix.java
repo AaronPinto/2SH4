@@ -18,7 +18,7 @@ public class Matrix {
 		this.cols = matrix[0].length;
 		this.matrix = new int[this.rows][this.cols];
 
-		//Perform deep copy
+		// Perform deep copy
 		for (int i = 0; i < rows; i++)
 			System.arraycopy(matrix[i], 0, this.matrix[i], 0, cols);
 	}
@@ -34,6 +34,7 @@ public class Matrix {
 		return this.matrix[i][j];
 	}
 
+	// Return true if the matrix was changed, false otherwise
 	public boolean setElement(int x, int i, int j) {
 		if ((i < 0 || i >= this.rows) || (j < 0 || j >= this.cols))
 			return false;
@@ -42,10 +43,12 @@ public class Matrix {
 		return true;
 	}
 
+	// Return deep copy of this matrix
 	public Matrix copy() {
 		return new Matrix(this.matrix);
 	}
 
+	// Adds another matrix to this matrix, if they're the same size
 	public void addTo(Matrix m) throws ArithmeticException {
 		if (this.rows != m.rows || this.cols != m.cols)
 			throw new ArithmeticException("Invalid operation");
@@ -63,6 +66,7 @@ public class Matrix {
 		return new Matrix(IntStream.range(0, i).mapToObj(k -> Arrays.copyOf(this.matrix[k], j)).toArray(int[][]::new));
 	}
 
+	// Check if each element under main diagonal is 0
 	public boolean isUpperTr() {
 		for (int i = 1; i < this.rows; i++)
 			for (int j = 0; j < i && j < this.cols; j++)
@@ -76,6 +80,7 @@ public class Matrix {
 		return this.rows == this.cols;
 	}
 
+	// Adds all the arrays together, if they are the same dimension
 	public static Matrix sum(Matrix[] matArray) throws ArithmeticException {
 		Matrix s = new Matrix(matArray[0].rows, matArray[0].cols);
 
