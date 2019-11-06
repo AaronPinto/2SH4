@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author sorina
  * (a previous prof for this class) - aaron
  */
-class Test {
+public class TestMatrices {
 	/**
 	 * @param args the command line arguments
 	 */
