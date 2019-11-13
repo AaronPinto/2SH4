@@ -1,13 +1,15 @@
-import LectureExamples.CircleExtend;
-import LectureExamples.Point;
+import LectureExamples.MySub;
+import LectureExamples.MySuper;
 
 public class COMPENG2SH4 {
 	public static void main(String[] args) {
-		CircleExtend c = new CircleExtend(3.5, 65, 7);
-		Point p = c;
-		Point x = new Point();
-		System.out.println(c.toString());
-		System.out.println(p.toString());
-		System.out.println(x.toString());
+		MySub p = new MySub();
+		MySuper q = p;
+
+		System.out.println(MySub.staticToString());
+		System.out.println(MySuper.staticToString());
+
+		System.out.println(p.instanceToString());
+		System.out.println(q.instanceToString());
 	}
 }
