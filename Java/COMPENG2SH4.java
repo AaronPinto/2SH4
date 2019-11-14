@@ -1,15 +1,13 @@
-import LectureExamples.MySub;
-import LectureExamples.MySuper;
+import LectureExamples.NewCircle;
+import LectureExamples.Rectangle;
+import LectureExamples.Shape;
+
+import java.util.Arrays;
 
 public class COMPENG2SH4 {
 	public static void main(String[] args) {
-		MySub p = new MySub();
-		MySuper q = p;
+		Shape[] array = new Shape[]{new Rectangle(2.5, 3.0), new NewCircle(2, 2, 4.0)};
 
-		System.out.println(MySub.staticToString());
-		System.out.println(MySuper.staticToString());
-
-		System.out.println(p.instanceToString());
-		System.out.println(q.instanceToString());
+		System.out.println(Arrays.stream(array).mapToDouble(Shape::area).sum());
 	}
 }
