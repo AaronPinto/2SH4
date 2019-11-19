@@ -1,7 +1,7 @@
 package LectureExamples;
 
 public interface Shape {
-	int K = 1;
-	double area();
-	String getName();
+    int K = 1;
+    double area();
+    String getName();
 }

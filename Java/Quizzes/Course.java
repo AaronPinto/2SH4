@@ -1,66 +1,91 @@
 package Quizzes;
 
-// Quiz 7, 8
+// Quiz 7, 8, 9
 public class Course {
-	private String name, code, instructor;
-	private int semOffered, capacity = 500, i = 0;
-	private Student[] studentsInCourse;
+    private String name, code, instructor;
+    private int semOffered, capacity = 500, i = 0;
+    private Student[] studentsInCourse;
 
-	public Course() {
-		this.studentsInCourse = new Student[capacity];
-	}
+    public Course() {
+        this.studentsInCourse = new Student[capacity];
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Course(String name, String code, String instructor, int semOffered, int capacity) {
+        this.name = name;
+        this.code = code;
+        this.instructor = instructor;
+        this.semOffered = semOffered;
+        this.capacity = capacity;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Course(String name, String code, String instructor, int semOffered, int capacity, Student[] studentsInCourse) {
+        this.name = name;
+        this.code = code;
+        this.instructor = instructor;
+        this.semOffered = semOffered;
+        this.capacity = capacity;
+        this.studentsInCourse = studentsInCourse;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getInstructor() {
-		return instructor;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setInstructor(String instructor) {
-		this.instructor = instructor;
-	}
+    public Student[] getStudentsInCourse() {
+        return studentsInCourse;
+    }
 
-	public int getSemOffered() {
-		return semOffered;
-	}
+    public void setStudentsInCourse(Student[] studentsInCourse) {
+        this.studentsInCourse = studentsInCourse;
+    }
 
-	public void setSemOffered(int semOffered) {
-		this.semOffered = semOffered;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public int getCapacity() {
-		return capacity;
-	}
+    public String getInstructor() {
+        return instructor;
+    }
 
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
+    }
 
-	public void enrollAStudent(Student enrolledStudent) {
-		this.studentsInCourse[i++] = enrolledStudent;
-	}
+    public int getSemOffered() {
+        return semOffered;
+    }
 
-	public void dropAStudent(Student enrolledStudent) {
-		for (int j = 0; j < this.capacity; j++) {
-			if (enrolledStudent == this.studentsInCourse[i]) {
-				this.studentsInCourse[i] = null;
-				enrolledStudent.dropACourse(this);
-				break;
-			}
-		}
-	}
+    public void setSemOffered(int semOffered) {
+        this.semOffered = semOffered;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public void enrollAStudent(Student enrolledStudent) {
+        this.studentsInCourse[i++] = enrolledStudent;
+    }
+
+    public void dropAStudent(Student droppedStudent) {
+        for (int j = 0; j < this.capacity; j++) {
+            if (droppedStudent == this.studentsInCourse[i]) {
+                this.studentsInCourse[i] = null;
+                droppedStudent.dropACourse(this);
+                break;
+            }
+        }
+    }
 }

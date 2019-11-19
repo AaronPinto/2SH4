@@ -1,28 +1,28 @@
 package Lab4;
 
 public class UpperTriangularMatrix {
-	private int n;
-	private int[] effMat;
+    private int n;
+    private int[] effMat;
 
-	public UpperTriangularMatrix(int n) {
-		this.n = n <= 0 ? 1 : n;
-		this.effMat = new int[this.n * (this.n + 1) / 2];
-	}
+    public UpperTriangularMatrix(int n) {
+        this.n = n <= 0 ? 1 : n;
+        this.effMat = new int[this.n * (this.n + 1) / 2];
+    }
 
-	public UpperTriangularMatrix(Matrix upTriM) throws IllegalArgumentException {
-		if (!upTriM.isUpperTr())
-			throw new IllegalArgumentException("Input matrix is not upper triangular");
-		else if (!upTriM.isSquare())
-			throw new IllegalArgumentException("Input matrix is not square");
+    public UpperTriangularMatrix(Matrix upTriM) throws IllegalArgumentException {
+        if (!upTriM.isUpperTr())
+            throw new IllegalArgumentException("Input matrix is not upper triangular");
+        else if (!upTriM.isSquare())
+            throw new IllegalArgumentException("Input matrix is not square");
 
-		this.n = upTriM.getRows();
-		this.effMat = new int[this.n * (this.n + 1) / 2];
+        this.n = upTriM.getRows();
+        this.effMat = new int[this.n * (this.n + 1) / 2];
 
-		int count = 0;
-		for (int i = 0; i < this.n; i++)
-			for (int j = i; j < this.n; j++)
-				this.effMat[count++] = upTriM.getElement(i, j);
-	}
+        int count = 0;
+        for (int i = 0; i < this.n; i++)
+            for (int j = i; j < this.n; j++)
+                this.effMat[count++] = upTriM.getElement(i, j);
+    }
 
 	/*
 	Example upper triangular matrix
@@ -68,101 +68,101 @@ public class UpperTriangularMatrix {
 	These are equivalent and you can prove it by expanding and simplifying the first equation.
 	 */
 
-	private int getLargestK(int i) {
-		int x = this.effMat.length - 1 - i;
-		return (int) ((Math.sqrt(8 * x + 1) - 1) / 2);
-	}
+    private int getLargestK(int i) {
+        int x = this.effMat.length - 1 - i;
+        return (int) ((Math.sqrt(8 * x + 1) - 1) / 2);
+    }
 
-	private int get2DRowIndex(int i) {
-		return this.n - 1 - this.getLargestK(i);
-	}
+    private int get2DRowIndex(int i) {
+        return this.n - 1 - this.getLargestK(i);
+    }
 
-	private int get2DColIndex(int i) {
-		int x = this.effMat.length - 1 - i;
-		int K = this.getLargestK(i);
-		return this.n - 1 - (x - K * (K + 1) / 2);
-	}
+    private int get2DColIndex(int i) {
+        int x = this.effMat.length - 1 - i;
+        int K = this.getLargestK(i);
+        return this.n - 1 - (x - K * (K + 1) / 2);
+    }
 
-	private int get1DIndex(int i, int j) {
-		return i * this.n - i * i / 2 + i / 2 + j - i;
-	}
+    private int get1DIndex(int i, int j) {
+        return i * this.n - i * i / 2 + i / 2 + j - i;
+    }
 
-	public int getDim() {
-		return this.n;
-	}
+    public int getDim() {
+        return this.n;
+    }
 
-	public int getElement(int i, int j) throws IndexOutOfBoundsException {
-		if ((i < 0 || i >= this.n) || (j < 0 || j >= this.n))
-			throw new IndexOutOfBoundsException("Invalid indexes");
+    public int getElement(int i, int j) throws IndexOutOfBoundsException {
+        if ((i < 0 || i >= this.n) || (j < 0 || j >= this.n))
+            throw new IndexOutOfBoundsException("Invalid indexes");
 
-		return j < i ? 0 : this.effMat[this.get1DIndex(i, j)];
-	}
+        return j < i ? 0 : this.effMat[this.get1DIndex(i, j)];
+    }
 
-	public void setElement(int x, int i, int j) throws IndexOutOfBoundsException, IllegalArgumentException {
-		if ((i < 0 || i >= this.n) || (j < 0 || j >= this.n))
-			throw new IndexOutOfBoundsException("Invalid indexes");
-		if (j < i) {
-			if (x != 0)
-				throw new IllegalArgumentException("Incorrect Argument");
-			return; // The element is already 0
-		}
+    public void setElement(int x, int i, int j) throws IndexOutOfBoundsException, IllegalArgumentException {
+        if ((i < 0 || i >= this.n) || (j < 0 || j >= this.n))
+            throw new IndexOutOfBoundsException("Invalid indexes");
+        if (j < i) {
+            if (x != 0)
+                throw new IllegalArgumentException("Incorrect Argument");
+            return; // The element is already 0
+        }
 
-		this.effMat[this.get1DIndex(i, j)] = x;
-	}
+        this.effMat[this.get1DIndex(i, j)] = x;
+    }
 
-	// Return the full 2D upper-triangular matrix
-	public Matrix fullMatrix() {
-		int[][] temp = new int[this.n][this.n];
+    // Return the full 2D upper-triangular matrix
+    public Matrix fullMatrix() {
+        int[][] temp = new int[this.n][this.n];
 
-		for (int i = 0; i < this.n; i++)
-			for (int j = 0; j < this.n; j++)
-				temp[i][j] = this.getElement(i, j);
+        for (int i = 0; i < this.n; i++)
+            for (int j = 0; j < this.n; j++)
+                temp[i][j] = this.getElement(i, j);
 
-		return new Matrix(temp);
-	}
+        return new Matrix(temp);
+    }
 
-	public void print1DArray() {
-		for (int value : this.effMat)
-			System.out.print(value + "  ");
-	}
+    public void print1DArray() {
+        for (int value : this.effMat)
+            System.out.print(value + "  ");
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder s = new StringBuilder();
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
 
-		for (int i = 0; i < this.n; i++) {
-			for (int j = 0; j < this.n; j++)
-				s.append(this.getElement(i, j)).append("  ");
+        for (int i = 0; i < this.n; i++) {
+            for (int j = 0; j < this.n; j++)
+                s.append(this.getElement(i, j)).append("  ");
 
-			s.append("\n");
-		}
+            s.append("\n");
+        }
 
-		return s.toString();
-	}
+        return s.toString();
+    }
 
-	// The determinant for an upper triangular matrix is the product of all the terms on the main diagonal
-	public int getDet() {
-		int det = 1;
+    // The determinant for an upper triangular matrix is the product of all the terms on the main diagonal
+    public int getDet() {
+        int det = 1;
 
-		for (int i = 0; i < this.n; i++)
-			det *= this.getElement(i, i);
+        for (int i = 0; i < this.n; i++)
+            det *= this.getElement(i, i);
 
-		return det;
-	}
+        return det;
+    }
 
-	// Use back substitution to solve, as its the fastest way to do so
-	public double[] effSolve(double[] b) throws IllegalArgumentException {
-		if (b.length != this.n)
-			throw new IllegalArgumentException("The length of b is not the same as the number of rows of A");
+    // Use back substitution to solve, as its the fastest way to do so
+    public double[] effSolve(double[] b) throws IllegalArgumentException {
+        if (b.length != this.n)
+            throw new IllegalArgumentException("The length of b is not the same as the number of rows of A");
 
-		int detA = 1;
+        int detA = 1;
 
-		// gets the 1D array index on the diagonal at row i
-		for (int i = 0; i < this.n; i++)
-			detA *= this.effMat[i * this.n - i * i / 2 + i / 2];
+        // gets the 1D array index on the diagonal at row i
+        for (int i = 0; i < this.n; i++)
+            detA *= this.effMat[i * this.n - i * i / 2 + i / 2];
 
-		if (detA == 0)
-			throw new IllegalArgumentException("The determinant of A is 0");
+        if (detA == 0)
+            throw new IllegalArgumentException("The determinant of A is 0");
 
 		/*
 		 We solve this system by starting at the last row and col, and then working our way up and to the left of the matrix, ending at
@@ -175,45 +175,45 @@ public class UpperTriangularMatrix {
 		 https://algowiki-project.org/en/Backward_substitution
 		*/
 
-		double[] x = new double[b.length];
-		x[x.length - 1] = b[b.length - 1] / this.effMat[this.effMat.length - 1];
+        double[] x = new double[b.length];
+        x[x.length - 1] = b[b.length - 1] / this.effMat[this.effMat.length - 1];
 
-		double sumConstTerms;
-		int k;
+        double sumConstTerms;
+        int k;
 
-		for (int j = this.n - 2; j >= 0; j--) {
-			sumConstTerms = 0.0;
+        for (int j = this.n - 2; j >= 0; j--) {
+            sumConstTerms = 0.0;
 
-			// start from last column and move left, calculating constant terms until the diagonal element
-			for (k = this.n - 1; k > j; k--)
-				// gets the element in A at that index (coeff) * the calculated value of x at k
-				sumConstTerms += this.effMat[j * this.n - j * j / 2 + j / 2 + k - j] * x[k];
+            // start from last column and move left, calculating constant terms until the diagonal element
+            for (k = this.n - 1; k > j; k--)
+                // gets the element in A at that index (coeff) * the calculated value of x at k
+                sumConstTerms += this.effMat[j * this.n - j * j / 2 + j / 2 + k - j] * x[k];
 
-			// compute value of x for this row
-			x[j] = (b[j] - sumConstTerms) / this.effMat[j * this.n - j * j / 2 + j / 2];
-		}
+            // compute value of x for this row
+            x[j] = (b[j] - sumConstTerms) / this.effMat[j * this.n - j * j / 2 + j / 2];
+        }
 
-		return x;
-	}
+        return x;
+    }
 
-	// Another method for solving Ax=b using back substitution, with only 1 loop, for fun. Not sure which one is faster.
-	double[] effSolve2(double[] b) {
-		double[] x = new double[b.length];
-		x[x.length - 1] = b[b.length - 1] / this.effMat[this.effMat.length - 1];
+    // Another method for solving Ax=b using back substitution, with only 1 loop, for fun. Not sure which one is faster.
+    double[] effSolve2(double[] b) {
+        double[] x = new double[b.length];
+        x[x.length - 1] = b[b.length - 1] / this.effMat[this.effMat.length - 1];
 
-		int j = 1, k = 0;
+        int j = 1, k = 0;
 
-		for (int i = this.effMat.length - 2; i >= 0; i--) {
-			if (k >= j) {
-				x[x.length - 1 - j] = b[b.length - 1 - j] / this.effMat[i];
-				j++;
-				k = 0;
-			} else {
-				k++;
-				b[b.length - 1 - j] -= this.effMat[i] * x[x.length - k];
-			}
-		}
+        for (int i = this.effMat.length - 2; i >= 0; i--) {
+            if (k >= j) {
+                x[x.length - 1 - j] = b[b.length - 1 - j] / this.effMat[i];
+                j++;
+                k = 0;
+            } else {
+                k++;
+                b[b.length - 1 - j] -= this.effMat[i] * x[x.length - k];
+            }
+        }
 
-		return x;
-	}
+        return x;
+    }
 }
