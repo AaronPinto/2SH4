@@ -31,7 +31,7 @@ public class UpperTriangularMatrix {
 	0 0 9
 
 	n = 3
-    Total number of elements in 1d array = n(n + 1) / 2 = M = 6
+	Total number of elements in 1d array = n(n + 1) / 2 = M = 6
 
 	There is always 1 element in the last row (index n - 1), 2 elements in row n - 2, 3 elements in row n - 3 and so on. Therefore, in the
 	last k rows, there are k(k + 1) / 2 elements, and therefore the last k rows take up the last k(k + 1) / 2 elements in the 1D array.
