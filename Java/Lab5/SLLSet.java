@@ -31,15 +31,19 @@ public class SLLSet {
     }
 
     public SLLSet copy() {
-        int[] temp = new int[this.size];
-        SLLNode s = this.head;
+        if (this.head == null) return new SLLSet();
 
-        for (int i = 0; i < this.size; i++) {
-            temp[i] = s.value;
-            s = s.next;
+        SLLNode out = new SLLNode(this.head.value, null);
+        SLLSet ss = new SLLSet();
+        ss.size = this.size;
+        ss.head = out;
+
+        for (SLLNode s = this.head.next; s != null; s = s.next) {
+            out.next = new SLLNode(s.value, null);
+            out = out.next;
         }
 
-        return new SLLSet(temp);
+        return ss;
     }
 
     public boolean isIn(int v) {
@@ -92,8 +96,7 @@ public class SLLSet {
     }
 
     public void remove(int v) {
-        if (this.head == null)
-            return;
+        if (this.head == null) return;
 
         SLLNode curr = this.head;
 
@@ -145,7 +148,7 @@ public class SLLSet {
         ss.size++;
 
         // Iterates through all the elements in both lists until there are no common ones
-        // This is guaranteed to exhaust at least one list
+        // This is guaranteed to exhaust at least one list, O(n) or O(m) worst-case
         while (list1 != null && list2 != null) {
             if (list1.value < list2.value) {
                 out.next = new SLLNode(list1.value, null);
@@ -163,7 +166,7 @@ public class SLLSet {
             ss.size++;
         }
 
-        // Add remaining elements in the non-null list, whichever one that is
+        // Add remaining elements in the non-null list, whichever one that is, O(m) or O(n) worst-case
         while (list1 != null) {
             out.next = new SLLNode(list1.value, null);
             list1 = list1.next;
@@ -235,8 +238,7 @@ public class SLLSet {
 
     @Override
     public String toString() {
-        if (this.head == null)
-            return "";
+        if (this.head == null) return "";
 
         SLLNode sn = this.head;
         StringBuilder s = new StringBuilder();

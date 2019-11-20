@@ -1,13 +1,14 @@
 package Quizzes;
 
+import java.util.ArrayList;
+
 // Quiz 7, 8, 9
 public class Course {
     private String name, code, instructor;
     private int semOffered, capacity = 500, i = 0;
-    private Student[] studentsInCourse;
+    private ArrayList<Student> studentsInCourse;
 
     public Course() {
-        this.studentsInCourse = new Student[capacity];
     }
 
     public Course(String name, String code, String instructor, int semOffered, int capacity) {
@@ -16,9 +17,10 @@ public class Course {
         this.instructor = instructor;
         this.semOffered = semOffered;
         this.capacity = capacity;
+        this.studentsInCourse = new ArrayList<>(this.capacity);
     }
 
-    public Course(String name, String code, String instructor, int semOffered, int capacity, Student[] studentsInCourse) {
+    public Course(String name, String code, String instructor, int semOffered, int capacity, ArrayList<Student> studentsInCourse) {
         this.name = name;
         this.code = code;
         this.instructor = instructor;
@@ -39,11 +41,11 @@ public class Course {
         return code;
     }
 
-    public Student[] getStudentsInCourse() {
+    public ArrayList<Student> getStudentsInCourse() {
         return studentsInCourse;
     }
 
-    public void setStudentsInCourse(Student[] studentsInCourse) {
+    public void setStudentsInCourse(ArrayList<Student> studentsInCourse) {
         this.studentsInCourse = studentsInCourse;
     }
 
@@ -76,13 +78,13 @@ public class Course {
     }
 
     public void enrollAStudent(Student enrolledStudent) {
-        this.studentsInCourse[i++] = enrolledStudent;
+        this.studentsInCourse.add(enrolledStudent);
     }
 
     public void dropAStudent(Student droppedStudent) {
         for (int j = 0; j < this.capacity; j++) {
-            if (droppedStudent == this.studentsInCourse[i]) {
-                this.studentsInCourse[i] = null;
+            if (droppedStudent == this.studentsInCourse.get(i)) {
+                this.studentsInCourse.set(i, null);
                 droppedStudent.dropACourse(this);
                 break;
             }
